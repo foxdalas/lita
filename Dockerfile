@@ -4,6 +4,6 @@ MAINTAINER Maxim Pogozhiy <foxdalas@gmail.com>
 RUN gem install bundler && mkdir /app
 COPY Gemfile /app/Gemfile
 WORKDIR /app
-RUN bundle install --path /app --without development test --jobs $(nproc) --clean
+RUN /bin/bash -c bundle install --without development test --clean
 
-CMD [ "/bin/bash", "-c", "bundle exec lita"]
+CMD [ "/bin/bash", "-c", "bundle install --without development test --clean && bundle exec lita"]
